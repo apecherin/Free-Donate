@@ -15,3 +15,28 @@ group :development, :test do
   gem 'spring'
 end
 
+
+gem 'active_model_serializers'
+gem 'haml'
+gem 'haml-rails'
+
+gem 'rmagick'
+gem 'uuid'                    # Generate UUID.
+gem 'koala'                   # Facebook API.
+gem 'http_accept_language'    # Find browser preferred language.
+gem 'countries'               # Find country by name or code.
+gem 'iso-639'                 # Find language by name or code.
+gem 'paperclip'               # File attachments.
+gem 'carrierwave'             # File attachments too.
+gem 'paperclip-meta'          # Store paperclip image sizes.
+gem 'therubyracer'
+gem 'nokogiri'
+gem 'cancan'
+gem 'settingslogic'
+gem 'ruby-units', git: 'https://github.com/apecherin/ruby-units.git'
+gem 'impressionist'
+gem 'tire'
+gem 'omniauth-facebook'
+gem 'imgkit'
+gem 'zeroclipboard-rails'
+gem 'haml_coffee_assets'

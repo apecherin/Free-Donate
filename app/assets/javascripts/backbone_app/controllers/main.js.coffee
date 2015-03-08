@@ -1,0 +1,3 @@
+Controllers.Main =
+  home: ->
+    @home()

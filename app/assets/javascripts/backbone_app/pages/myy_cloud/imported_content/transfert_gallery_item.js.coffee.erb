@@ -1,0 +1,39 @@
+class Pages.MyyCloud.TransfertGalleryItem extends Pages.MyyCloud.GalleryItem
+
+  initialize: ({@pictures, @galleryPrivacy})->
+
+  events:
+    'click a.show-gallery > img' : 'goToGallery'
+    'click a.show-gallery > h6'  : 'goToGallery'
+    'keyup input#gallery-title-album' : 'checkForSubmit'
+
+
+  serializeData: ->
+    if @model.isNew()
+      title: "Create New Gallery"
+      hasUrl: 'no-url'
+      source: '<%= image_path('galleries/blue-cross.png') %>'
+      altText: "Create New Gallery"
+    else
+      super
+
+  goToGallery: ->
+    if @model.isNew()
+      @model.set picture_ids: @pictures.map((p)=> p.id), privacy: @galleryPrivacy, title: @$('#gallery-title-album').val()
+      @model.save null,
+        success: (album)->
+          MyApp.layout.content.show new Pages.MyyCloud.Gallery gallery: album
+          Backbone.history.navigate Routers.Main.showUserAlbumPath(album.get('user'), album), false
+          MyApp.modal.close()
+    else
+      @model.set picture_ids: @pictures.map((p)=> p.id)
+      @model.save null,
+        success: (album)->
+          MyApp.layout.content.show new Pages.MyyCloud.Gallery gallery: album
+          Backbone.history.navigate Routers.Main.showUserAlbumPath(album.get('user'), album), false
+          MyApp.modal.close()
+    false
+
+  checkForSubmit: (event)->
+    if event.keyCode is 13
+      @goToGallery()

@@ -1,0 +1,16 @@
+class Pages.Ads.Ad_160x600 extends Backbone.Marionette.ItemView
+  template: 'ads/ad_160x600'
+  className: 'ad ad_160x600'
+
+  adSources: ['http://i.imgur.com/qrKoHUQ.png',
+              'http://i.imgur.com/QuCJw6W.png',
+              'http://i.imgur.com/q7pmpMh.png',
+              'http://i.imgur.com/a67QfNq.png',
+              'http://i.imgur.com/hjUZEFx.png',
+              'http://i.imgur.com/LMECjMG.png' ]
+
+  initialize: ->
+    @src =  <% if Rails.env.test? %> '/assets/m5garage_logo.png' <% else %> @adSources[Math.floor(Math.random() * @adSources.length)] <% end %>
+
+  serializeData: ->
+    src: @src

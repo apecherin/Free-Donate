@@ -1,0 +1,1 @@
+class Pages.Vehicles.Expenses.LegalInfo extends Pages.Vehicles.Expenses.DrivingInfo
